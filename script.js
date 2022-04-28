@@ -8,12 +8,18 @@ document.querySelector('.number').textContent = secretNumber;
 document.querySelector('.check').addEventListener('click', function () {
     const guess = Number(document.querySelector('.guess').value);
     console.log(guess, typeof guess);
-
+    // Pokud zde není číslo
     if (!guess) {
         document.querySelector('.message').textContent = '⛔️ Není to číslo!!';
+        // Pokud hráč vyhraje
     } else if (guess === secretNumber) {
         document.querySelector('.message').textContent = '🎉 Správné číslo!';
-    } else if (guess > secretNumber) {
+        // Změní se barva na zelenou a velikost políčka
+        document.querySelector('body').style.backgroundColor = 'green';
+        document.querySelector('.number').style.width = '30rem';
+    }
+    // Pokud je číslo vysoké
+    else if (guess > secretNumber) {
         if (score > 0) {
             document.querySelector('.message').textContent = 'Moc vysoké 📈';
             score--;
@@ -21,8 +27,12 @@ document.querySelector('.check').addEventListener('click', function () {
         } else {
             document.querySelector('.message').textContent =
                 '💔 Prohrál jsi 😥';
+            // Změní se číslo na červenou
+            document.querySelector('body').style.backgroundColor = 'red';
         }
-    } else if (guess < secretNumber) {
+    }
+    // Pokud je číslo nízké
+    else if (guess < secretNumber) {
         if (score > 0) {
             document.querySelector('.message').textContent = 'Moc nízké 📉';
             score--;
@@ -30,6 +40,8 @@ document.querySelector('.check').addEventListener('click', function () {
         } else {
             document.querySelector('.message').textContent =
                 '💔 Prohrál jsi 😥';
+            // Změní se číslo na červenou
+            document.querySelector('body').style.backgroundColor = 'red';
         }
     }
 });
