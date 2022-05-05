@@ -3,6 +3,10 @@
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highScore = 0;
+// DRY funkce
+const displayMessage = function (message) {
+    document.querySelector('.message').textContent = message;
+};
 //hendler function
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -10,10 +14,10 @@ document.querySelector('.check').addEventListener('click', function () {
     console.log(guess, typeof guess);
     // Pokud zde není číslo
     if (!guess) {
-        document.querySelector('.message').textContent = '⛔️ Není to číslo!!';
+        displayMessage('⛔️ Není to číslo!!');
         // Pokud hráč vyhraje
     } else if (guess === secretNumber) {
-        document.querySelector('.message').textContent = '🎉 Správné číslo!';
+        displayMessage('🎉 Správné číslo!');
         // Změní se barva na zelenou a velikost políčka
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
@@ -28,13 +32,13 @@ document.querySelector('.check').addEventListener('click', function () {
     // když je číslo špatné
     else if (guess !== secretNumber) {
         if (score > 1) {
-            document.querySelector('.message').textContent =
-                guess > secretNumber ? 'Moc vysoké 📈' : 'Moc nízké 📉';
+            displayMessage(
+                guess > secretNumber ? 'Moc vysoké 📈' : 'Moc nízké 📉'
+            );
             score--;
             document.querySelector('.score').textContent = score;
         } else {
-            document.querySelector('.message').textContent =
-                '💔 Prohrál jsi 😥';
+            displayMessage('💔 Prohrál jsi 😥');
             // Změní se číslo na červenou
             document.querySelector('body').style.backgroundColor = 'red';
         }
