@@ -16,6 +16,8 @@ document.querySelector('.check').addEventListener('click', function () {
         // Změní se barva na zelenou a velikost políčka
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
+        //ukáže se správné číslo
+        document.querySelector('.number').textContent = secretNumber;
     }
     // Pokud je číslo vysoké
     else if (guess > secretNumber) {
