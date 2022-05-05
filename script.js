@@ -2,7 +2,6 @@
 // vytvoření náhodného čísla
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 10;
-document.querySelector('.number').textContent = secretNumber;
 //hendler function
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -15,7 +14,7 @@ document.querySelector('.check').addEventListener('click', function () {
     } else if (guess === secretNumber) {
         document.querySelector('.message').textContent = '🎉 Správné číslo!';
         // Změní se barva na zelenou a velikost políčka
-        document.querySelector('body').style.backgroundColor = 'green';
+        document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
     }
     // Pokud je číslo vysoké
