@@ -13,16 +13,17 @@ document.querySelector('.check').addEventListener('click', function () {
         document.querySelector('.message').textContent = '⛔️ Není to číslo!!';
         // Pokud hráč vyhraje
     } else if (guess === secretNumber) {
-        if (score > highScore) {
-            highScore = score;
-            document.querySelector('.highscore').textContent = highScore;
-        }
         document.querySelector('.message').textContent = '🎉 Správné číslo!';
         // Změní se barva na zelenou a velikost políčka
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
         //ukáže se správné číslo
         document.querySelector('.number').textContent = secretNumber;
+        // Když je skore větší než highScore Highscore se přepíše.
+        if (score > highScore) {
+            highScore = score;
+            document.querySelector('.highscore').textContent = highScore;
+        }
     }
     // Pokud je číslo vysoké
     else if (guess > secretNumber) {
