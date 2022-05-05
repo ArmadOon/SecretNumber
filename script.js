@@ -46,3 +46,10 @@ document.querySelector('.check').addEventListener('click', function () {
         }
     }
 });
+// Po kliknutí na tlačítko znovu, se hra resetuje
+document.querySelector('.again').addEventListener('click', function () {
+    function locationReload() {
+        location.reload();
+    }
+    locationReload();
+});
