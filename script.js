@@ -25,23 +25,11 @@ document.querySelector('.check').addEventListener('click', function () {
             document.querySelector('.highscore').textContent = highScore;
         }
     }
-    // Pokud je číslo vysoké
-    else if (guess > secretNumber) {
-        if (score > 0) {
-            document.querySelector('.message').textContent = 'Moc vysoké 📈';
-            score--;
-            document.querySelector('.score').textContent = score;
-        } else {
+    // když je číslo špatné
+    else if (guess !== secretNumber) {
+        if (score > 1) {
             document.querySelector('.message').textContent =
-                '💔 Prohrál jsi 😥';
-            // Změní se číslo na červenou
-            document.querySelector('body').style.backgroundColor = 'red';
-        }
-    }
-    // Pokud je číslo nízké
-    else if (guess < secretNumber) {
-        if (score > 0) {
-            document.querySelector('.message').textContent = 'Moc nízké 📉';
+                guess > secretNumber ? 'Moc vysoké 📈' : 'Moc nízké 📉';
             score--;
             document.querySelector('.score').textContent = score;
         } else {
@@ -52,6 +40,7 @@ document.querySelector('.check').addEventListener('click', function () {
         }
     }
 });
+
 // Po kliknutí na tlačítko znovu, se hra resetuje
 document.querySelector('.again').addEventListener('click', function () {
     function locationReload() {
